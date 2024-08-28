@@ -25,7 +25,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.csrf(AbstractHttpConfigurer::disable);
-        http.authorizeHttpRequests(httpRequest -> httpRequest.anyRequest().authenticated());
+        http.authorizeHttpRequests(httpRequest -> httpRequest.requestMatchers("/auth/**").permitAll().anyRequest().authenticated());
         // to allow login from rest clients like postman, insomnia
         http.httpBasic(Customizer.withDefaults());
         // to handle the sessionManagement, a new session will be created for every request
