@@ -24,10 +24,10 @@ public class UserService {
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
 
-    public UserService(UserRepository userRepository, AuthenticationManager authenticationManager) throws NoSuchAlgorithmException {
+    public UserService(UserRepository userRepository, AuthenticationManager authenticationManager, JwtUtils jwtUtils) throws NoSuchAlgorithmException {
         this.userRepository = userRepository;
         this.authenticationManager = authenticationManager;
-        this.jwtUtils = new JwtUtils();
+        this.jwtUtils = jwtUtils;
         this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
     }
 
